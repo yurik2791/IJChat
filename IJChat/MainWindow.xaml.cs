@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Net.Sockets;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Threading;
 using System.Windows;
 using System.Windows.Documents;
 using Helper;
@@ -16,6 +19,31 @@ namespace IJChat
 		public MainWindow()
 		{
 			InitializeComponent();
+			new Thread(UpdateUsers).Start();
+			new Thread(UpdateChat).Start();
+		}
+
+		private void UpdateUsers()
+		{
+			while (true)
+			{
+				var tcpClient = new TcpClient(@"192.168.2.94", 7777);
+				var stream = tcpClient.GetStream();
+				IFormatter formatter = new BinaryFormatter();
+				var Users = formatter.Deserialize(stream) as Dictionary<string, string>;
+				listView.Dispatcher.Invoke(() =>
+				{
+					listView.ItemsSource = Users?.Select((t) => t.Key);
+					tcpClient.Close();
+					Thread.Sleep(1000);
+
+				});
+			}
+		}
+
+		private void UpdateChat()
+		{
+			
 		}
 
 		private void button_Click(object sender, RoutedEventArgs e)

@@ -14,16 +14,23 @@
 			</LinearGradientBrush>
 		</Grid.Background>
 		<Button x:Name="button" Content="Send" HorizontalAlignment="Left" Margin="432,280,0,0" VerticalAlignment="Top" Width="75" Click="button_Click" Background="#FFBDBCBC"/>
-		<RichTextBox x:Name="rtb_one" HorizontalAlignment="Left" Height="219" Margin="10,11,0,0" VerticalAlignment="Top" Width="405">
+		<RichTextBox x:Name="rtb_one" HorizontalAlignment="Left" Height="219" Margin="10,11,0,0" VerticalAlignment="Top" Width="338">
 			<FlowDocument/>
 		</RichTextBox>
-		<RichTextBox x:Name="rtb_two" HorizontalAlignment="Left" Height="57" Margin="10,243,0,0" VerticalAlignment="Top" Width="405">
+		<RichTextBox x:Name="rtb_two" HorizontalAlignment="Left" Height="57" Margin="10,243,0,0" VerticalAlignment="Top" Width="338">
 			<FlowDocument>
 				<Paragraph>
 					<Run Text=""/>
 				</Paragraph>
 			</FlowDocument>
 		</RichTextBox>
+		<ListView x:Name="listView" HorizontalAlignment="Left" Height="213" Margin="370,17,0,0" VerticalAlignment="Top" Width="126">
+			<ListView.View>
+				<GridView>
+					<GridViewColumn/>
+				</GridView>
+			</ListView.View>
+		</ListView>
 
 	</Grid>
 </Window>
