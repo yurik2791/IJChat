@@ -39,7 +39,7 @@ namespace IJChat
 			var tcpClient = new TcpClient(@"192.168.2.94",4444);
 			IFormatter formater = new BinaryFormatter();
 			var stream = tcpClient.GetStream();
-			formater.Serialize(stream, msg);
+			formater.Serialize(stream, msg); 
 		}
 	}
 }
